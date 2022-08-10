@@ -10,7 +10,7 @@ Teacher::Teacher(int empId, string name, string pwd) {}
 void Teacher::operMenu() {}
 
 // view all reservation
-void Teacher::showAllReservation() {}
+void Teacher::showAllOrder() {}
 
 // confirm reservation
-void Teacher::validReservation() {}
+void Teacher::validOrder() {}

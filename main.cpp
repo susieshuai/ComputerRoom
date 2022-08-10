@@ -1,5 +1,63 @@
 #include <iostream>
 using namespace std;
+#include "identity.h"
+#include <fstream>
+#include <string>
+#include "globalFile.h"
+
+// login
+void login(string fileName, int identityType)
+{
+    Identity *person = NULL;
+
+    // read file
+    ifstream ifs;
+    ifs.open(fileName, ios::in);
+
+    if (!ifs.is_open())
+    {
+        cout << "File not exists." << endl;
+        ifs.close();
+        return;
+    }
+
+    // load user info
+    int id = 0;
+    string name;
+    string pwd;
+
+    // identity
+    if (identityType == 1)
+    {
+        cout << "Please input student id:" << endl;
+        cin >> id;
+    }
+    else if (identityType == 2)
+    {
+        cout << "Please input teacher id:" << endl;
+        cin >> id;
+    }
+
+    cout << "Please input username:" << endl;
+    cin >> name;
+
+    cout << "Please input password:" << endl;
+    cin >> pwd;
+
+    // verify
+    if (identityType == 1)
+    {
+    }
+    else if (identityType == 2)
+    {
+    }
+    else if (identityType == 3)
+    {
+    }
+
+    cout << "Sorry, wrong input." << endl;
+    return;
+}
 
 int main()
 {
@@ -31,17 +89,17 @@ int main()
 
         // student
         case 1:
-            /* code */
+            login(STUDENT_FILE, 1);
             break;
 
         // teacher
         case 2:
-            /* code */
+            login(TEACHER_FILE, 2);
             break;
 
         // admin
         case 3:
-            /* code */
+            login(ADMIN_FILE, 3);
             break;
 
         // exit

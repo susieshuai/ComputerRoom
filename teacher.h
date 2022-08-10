@@ -16,10 +16,10 @@ public:
     virtual void operMenu();
 
     // view all reservation
-    void showAllReservation();
+    void showAllOrder();
 
     // confirm reservation
-    void validReservation();
+    void validOrder();
 
     // employee id
     int empId;
