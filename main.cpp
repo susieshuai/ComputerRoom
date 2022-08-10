@@ -4,6 +4,9 @@ using namespace std;
 #include <fstream>
 #include <string>
 #include "globalFile.h"
+#include "student.cpp"
+#include "teacher.cpp"
+#include "admin.cpp"
 
 // login
 void login(string fileName, int identityType)
@@ -47,6 +50,20 @@ void login(string fileName, int identityType)
     // verify
     if (identityType == 1)
     {
+        // file info
+        int fId;
+        string fName;
+        string fPwd;
+
+        while (ifs >> fId && ifs >> fName && ifs >> fPwd)
+        {
+            // compare with user info
+            if (fId == id && fName == name && fPwd == pwd)
+            {
+                cout << "Student identity verified! You are logged in." << endl;
+                person = new Student(id, name, pwd);
+            }
+        }
     }
     else if (identityType == 2)
     {
