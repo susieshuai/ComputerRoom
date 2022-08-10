@@ -8,6 +8,44 @@ using namespace std;
 #include "teacher.cpp"
 #include "admin.cpp"
 
+// redir to admin sub memu
+void adminMenu(Identity *&admin)
+{
+    // call operation memu
+    admin->operMenu();
+
+    // cast to call other funcs
+    Admin *ad = (Admin *)admin;
+
+    int select = 0;
+    cout << "Please choose:" << endl;
+    cin >> select;
+
+    switch (select)
+    {
+    case 1:
+        ad->addPerson();
+        break;
+
+    case 2:
+        ad->showPerson();
+        break;
+
+    case 3:
+        ad->showComputer();
+        break;
+
+    case 4:
+        ad->cleanFile();
+        break;
+
+    default:
+        delete admin;
+        cout << "Logged out." << endl;
+        break;
+    }
+}
+
 // login
 void login(string fileName, int identityType)
 {
@@ -90,6 +128,22 @@ void login(string fileName, int identityType)
     }
     else if (identityType == 3)
     {
+        // file info
+        string fName;
+        string fPwd;
+
+        while (ifs >> fName && ifs >> fPwd)
+        {
+            // compare with user info
+            if (fName == name && fPwd == pwd)
+            {
+                cout << "Admin identity verified! You are logged in." << endl;
+                person = new Admin(name, pwd);
+                // admin sub memu
+                adminMenu(person);
+                return;
+            }
+        }
     }
 
     cout << "Sorry, wrong input." << endl;

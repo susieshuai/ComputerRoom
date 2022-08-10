@@ -13,4 +13,6 @@ public:
     string name;
     // password
     string pwd;
+
+    virtual ~Identity() = default;
 };
