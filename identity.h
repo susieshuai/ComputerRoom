@@ -9,6 +9,8 @@ public:
     // operation menu
     virtual void operMenu() = 0;
 
+    // username
     string name;
-    string pwd; // password
+    // password
+    string pwd;
 };
