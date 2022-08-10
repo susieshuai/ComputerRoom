@@ -62,11 +62,31 @@ void login(string fileName, int identityType)
             {
                 cout << "Student identity verified! You are logged in." << endl;
                 person = new Student(id, name, pwd);
+                // student sub menu
+                // TBD
+                return;
             }
         }
     }
     else if (identityType == 2)
     {
+        // file info
+        int fId;
+        string fName;
+        string fPwd;
+
+        while (ifs >> fId && ifs >> fName && ifs >> fPwd)
+        {
+            // compare with user info
+            if (fId == id && fName == name && fPwd == pwd)
+            {
+                cout << "Teacher identity verified! You are logged in." << endl;
+                person = new Teacher(id, name, pwd);
+                // teacher sub memu
+                // TBD
+                return;
+            }
+        }
     }
     else if (identityType == 3)
     {
