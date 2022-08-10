@@ -46,7 +46,8 @@ int main()
 
         // exit
         case 0:
-            /* code */
+            cout << "Goodbye! See you next time." << endl;
+            exit(0);
             break;
 
         // illegal arg
