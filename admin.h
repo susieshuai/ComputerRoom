@@ -4,6 +4,9 @@ using namespace std;
 #include "identity.h"
 #include <fstream>
 #include "globalFile.h"
+#include <vector>
+#include "student.h"
+#include "teacher.h"
 
 class Admin : public Identity
 {
@@ -28,4 +31,13 @@ public:
 
     // clear reservation record
     void cleanFile();
+
+    // init containers
+    void initVector();
+
+    // student container
+    vector<Student> vStu;
+
+    // teacher container
+    vector<Teacher> vTea;
 };

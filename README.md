@@ -2,7 +2,12 @@
 C++ based project
 
 ## Concepts
-TBD
+- OOD
+- Polymorphism
+    - Base class: Identity
+    - Derived class: Admin, Teacher, Student
+- STL
+    - Containers: string, vector
 
 ## Functionalities
 TBD
