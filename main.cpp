@@ -11,38 +11,41 @@ using namespace std;
 // redir to admin sub memu
 void adminMenu(Identity *&admin)
 {
-    // call operation memu
-    admin->operMenu();
-
-    // cast to call other funcs
-    Admin *ad = (Admin *)admin;
-
-    int select = 0;
-    cout << "Please choose:" << endl;
-    cin >> select;
-
-    switch (select)
+    while (true)
     {
-    case 1:
-        ad->addPerson();
-        break;
+        // call operation memu
+        admin->operMenu();
 
-    case 2:
-        ad->showPerson();
-        break;
+        // cast to call other funcs
+        Admin *ad = (Admin *)admin;
 
-    case 3:
-        ad->showComputer();
-        break;
+        int select = 0;
+        // cout << "Please choose:" << endl;
+        cin >> select;
 
-    case 4:
-        ad->cleanFile();
-        break;
+        switch (select)
+        {
+        case 1:
+            ad->addPerson();
+            break;
 
-    default:
-        delete admin;
-        cout << "Logged out." << endl;
-        break;
+        case 2:
+            ad->showPerson();
+            break;
+
+        case 3:
+            ad->showComputer();
+            break;
+
+        case 4:
+            ad->cleanFile();
+            break;
+
+        default:
+            delete admin;
+            cout << "Logged out." << endl;
+            return;
+        }
     }
 }
 

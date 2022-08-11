@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 #include "identity.h"
+#include <fstream>
+#include "globalFile.h"
 
 class Admin : public Identity
 {
@@ -13,7 +15,7 @@ public:
     Admin(string name, string pwd);
 
     // operMenu
-    virtual void operMenu();
+    void operMenu();
 
     // add user
     void addPerson();

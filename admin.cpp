@@ -31,7 +31,54 @@ void Admin::operMenu()
 }
 
 // add user
-void Admin::addPerson() {}
+void Admin::addPerson()
+{
+    cout << "Please select a person you want to add:" << endl;
+    cout << "1. Student" << endl;
+    cout << "2. Teacher" << endl;
+
+    string fileName;
+    string notice;
+
+    ofstream ofs;
+
+    int select = 0;
+    cin >> select;
+
+    if (select == 1)
+    {
+        // add a student
+        fileName = STUDENT_FILE;
+        notice = "Student ID:";
+    }
+    else
+    {
+        // add a teacher
+        fileName = TEACHER_FILE;
+        notice = "Teacher ID:";
+    }
+
+    ofs.open(fileName, ios::out | ios::app);
+
+    int id;
+    string name;
+    string pwd;
+
+    cout << notice << endl;
+    cin >> id;
+
+    cout << "Name:" << endl;
+    cin >> name;
+
+    cout << "Password:" << endl;
+    cin >> pwd;
+
+    // write file
+    ofs << id << " " << name << " " << pwd << " " << endl;
+    cout << "Added a new person!" << endl;
+
+    ofs.close();
+}
 
 // view users
 void Admin::showPerson() {}
