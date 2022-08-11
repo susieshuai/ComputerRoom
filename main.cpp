@@ -8,6 +8,46 @@ using namespace std;
 #include "teacher.cpp"
 #include "admin.cpp"
 
+// redir to student sub memu
+void studentMenu(Identity *&student)
+{
+    while (true)
+    {
+        // call operation memu
+        student->operMenu();
+
+        // cast to call other funcs
+        Student *stu = (Student *)student;
+
+        int select = 0;
+        cin >> select;
+
+        switch (select)
+        {
+        case 1:
+            stu->applyOrder();
+            break;
+
+        case 2:
+            stu->showMyOrder();
+            break;
+
+        case 3:
+            stu->showAllOrder();
+            break;
+
+        case 4:
+            stu->cancelOrder();
+            break;
+
+        default:
+            delete student;
+            cout << "Logged out." << endl;
+            return;
+        }
+    }
+}
+
 // redir to admin sub memu
 void adminMenu(Identity *&admin)
 {
@@ -20,7 +60,6 @@ void adminMenu(Identity *&admin)
         Admin *ad = (Admin *)admin;
 
         int select = 0;
-        // cout << "Please choose:" << endl;
         cin >> select;
 
         switch (select)
@@ -104,7 +143,7 @@ void login(string fileName, int identityType)
                 cout << "Student identity verified! You are logged in." << endl;
                 person = new Student(id, name, pwd);
                 // student sub menu
-                // TBD
+                studentMenu(person);
                 return;
             }
         }
