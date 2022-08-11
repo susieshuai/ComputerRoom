@@ -10,6 +10,20 @@ Admin::Admin(string name, string pwd)
     this->pwd = pwd;
 
     this->initVector();
+
+    // computer room info
+    ifstream ifs;
+    ifs.open(COMPUTER_FILE, ios::in);
+
+    ComputerRoom cr;
+    while (ifs >> cr.compId && ifs >> cr.capacity)
+    {
+        vComp.push_back(cr);
+    }
+
+    ifs.close();
+
+    // cout << "Computer Room: " << vComp.size() << endl;
 }
 
 // operMenu
@@ -133,7 +147,13 @@ void Admin::showPerson()
 }
 
 // view computer room info
-void Admin::showComputer() {}
+void Admin::showComputer()
+{
+    for (vector<ComputerRoom>::iterator it = this->vComp.begin(); it != this->vComp.end(); it++)
+    {
+        cout << "ID: " << it->compId << "\tCapacity: " << it->capacity << endl;
+    }
+}
 
 // clear reservation record
 void Admin::cleanFile() {}
