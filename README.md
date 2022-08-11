@@ -7,7 +7,7 @@ C++ based project
     - Base class: Identity
     - Derived class: Admin, Teacher, Student
 - STL
-    - Containers: string, vector
+    - Containers: string, vector, map
     - Algorithms
         - Algorithm: for_each
         - Numeric

@@ -7,6 +7,7 @@ using namespace std;
 #include "student.cpp"
 #include "teacher.cpp"
 #include "admin.cpp"
+#include "orderFile.cpp"
 
 // redir to student sub memu
 void studentMenu(Identity *&student)

@@ -133,6 +133,7 @@ void Student::showMyOrder()
 // view all reservation
 void Student::showAllOrder()
 {
+    OrderFile of;
 }
 
 // cancel reservation
