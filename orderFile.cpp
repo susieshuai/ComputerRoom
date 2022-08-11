@@ -59,4 +59,27 @@ OrderFile::OrderFile()
 }
 
 // update order
-void OrderFile::updateOrder() {}
+void OrderFile::updateOrder()
+{
+    if (this->size == 0)
+    {
+        return;
+    }
+
+    ofstream ofs;
+    ofs.open(ORDER_FILE, ios::trunc);
+
+    // overwrite
+    for (int i = 0; i < this->size; i++)
+    {
+        ofs << "date:" << this->orderData[i]["date"] << ""
+            << "interval:" << this->orderData[i]["interval"] << ""
+            << "stuId:" << this->orderData[i]["stuId"] << ""
+            << "stuName:" << this->orderData[i]["stuName"] << ""
+            << "roomId:" << this->orderData[i]["roomId"] << ""
+            << "status:" << this->orderData[i]["status"] << ""
+            << endl;
+    }
+
+    ofs.close();
+}
