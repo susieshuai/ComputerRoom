@@ -41,6 +41,7 @@ void Admin::addPerson()
 
     string fileName;
     string notice;
+    string errorMsg;
 
     ofstream ofs;
 
@@ -52,12 +53,14 @@ void Admin::addPerson()
         // add a student
         fileName = STUDENT_FILE;
         notice = "Student ID:";
+        errorMsg = "Student ID cannot be the same, please input again.";
     }
     else
     {
         // add a teacher
         fileName = TEACHER_FILE;
         notice = "Teacher ID:";
+        errorMsg = "Teacher ID cannot be the same, please input again.";
     }
 
     ofs.open(fileName, ios::out | ios::app);
@@ -66,8 +69,21 @@ void Admin::addPerson()
     string name;
     string pwd;
 
-    cout << notice << endl;
-    cin >> id;
+    while (true)
+    {
+        cout << notice << endl;
+        cin >> id;
+        bool dup = this->checkDuplicate(id, select);
+
+        if (dup)
+        {
+            cout << errorMsg << endl;
+        }
+        else
+        {
+            break;
+        }
+    }
 
     cout << "Name:" << endl;
     cin >> name;
@@ -80,6 +96,10 @@ void Admin::addPerson()
     cout << "Added a new person!" << endl;
 
     ofs.close();
+
+    // init containers after adding a new person
+    // avoid adding person with duplicate id
+    this->initVector();
 }
 
 // view users
@@ -114,7 +134,7 @@ void Admin::initVector()
         vStu.push_back(student);
     }
 
-    cout << "Students number: " << vStu.size() << endl;
+    // cout << "Students number: " << vStu.size() << endl;
     ifs.close();
 
     // read teacher file
@@ -132,6 +152,33 @@ void Admin::initVector()
         vTea.push_back(teacher);
     }
 
-    cout << "Teachers number: " << vTea.size() << endl;
+    // cout << "Teachers number: " << vTea.size() << endl;
     ifs.close();
+}
+
+// check duplicate
+bool Admin::checkDuplicate(int id, int identityType)
+{
+    if (identityType == 1)
+    {
+        for (vector<Student>::iterator it = vStu.begin(); it != vStu.end(); it++)
+        {
+            if (id == it->stuId)
+            {
+                return true;
+            }
+        }
+    }
+    else
+    {
+        for (vector<Teacher>::iterator it = vTea.begin(); it != vTea.end(); it++)
+        {
+            if (id == it->empId)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }

@@ -35,6 +35,9 @@ public:
     // init containers
     void initVector();
 
+    // check duplicate
+    bool checkDuplicate(int id, int identityType);
+
     // student container
     vector<Student> vStu;
 
