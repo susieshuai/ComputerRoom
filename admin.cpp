@@ -102,8 +102,35 @@ void Admin::addPerson()
     this->initVector();
 }
 
+void printStudent(Student &student)
+{
+    cout << "ID: " << student.stuId << "\tName: " << student.name << "\tPassword: " << student.pwd << endl;
+}
+
+void printTeacher(Teacher &teacher)
+{
+    cout << "ID: " << teacher.empId << "\tName: " << teacher.name << "\tPassword: " << teacher.pwd << endl;
+}
+
 // view users
-void Admin::showPerson() {}
+void Admin::showPerson()
+{
+    cout << "Show information of:" << endl;
+    cout << "1. Student" << endl;
+    cout << "2. Teacher" << endl;
+
+    int select = 0;
+    cin >> select;
+
+    if (select == 1)
+    {
+        for_each(vStu.begin(), vStu.end(), printStudent);
+    }
+    else
+    {
+        for_each(vTea.begin(), vTea.end(), printTeacher);
+    }
+}
 
 // view computer room info
 void Admin::showComputer() {}

@@ -8,6 +8,9 @@ C++ based project
     - Derived class: Admin, Teacher, Student
 - STL
     - Containers: string, vector
+    - Algorithms
+        - Algorithm: for_each
+        - Numeric
 
 ## Functionalities
 TBD
