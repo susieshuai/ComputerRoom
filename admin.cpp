@@ -156,7 +156,14 @@ void Admin::showComputer()
 }
 
 // clear reservation record
-void Admin::cleanFile() {}
+void Admin::cleanFile()
+{
+    ofstream ofs;
+    ofs.open(ORDER_FILE, ios::trunc);
+    ofs.close();
+
+    cout << "Order is cleaned." << endl;
+}
 
 // init containers
 void Admin::initVector()
