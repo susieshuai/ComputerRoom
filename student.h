@@ -2,6 +2,10 @@
 #include <iostream>
 using namespace std;
 #include "identity.h"
+#include <vector>
+#include "computerRoom.h"
+#include <fstream>
+#include "globalFile.h"
 
 class Student : public Identity
 {
@@ -29,4 +33,7 @@ public:
 
     // student id
     int stuId;
+
+    // computer room container
+    vector<ComputerRoom> vComp;
 };
