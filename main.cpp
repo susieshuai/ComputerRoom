@@ -49,6 +49,38 @@ void studentMenu(Identity *&student)
     }
 }
 
+// redir to teacher sub memu
+void teacherMenu(Identity *&teacher)
+{
+    while (true)
+    {
+        // call operation memu
+        teacher->operMenu();
+
+        // cast to call other funcs
+        Teacher *tea = (Teacher *)teacher;
+
+        int select = 0;
+        cin >> select;
+
+        switch (select)
+        {
+        case 1:
+            tea->showAllOrder();
+            break;
+
+        case 2:
+            tea->validOrder();
+            break;
+
+        default:
+            delete teacher;
+            cout << "Logged out." << endl;
+            return;
+        }
+    }
+}
+
 // redir to admin sub memu
 void adminMenu(Identity *&admin)
 {
@@ -164,7 +196,7 @@ void login(string fileName, int identityType)
                 cout << "Teacher identity verified! You are logged in." << endl;
                 person = new Teacher(id, name, pwd);
                 // teacher sub memu
-                // TBD
+                teacherMenu(person);
                 return;
             }
         }
