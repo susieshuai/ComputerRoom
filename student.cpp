@@ -136,7 +136,7 @@ void Student::showMyOrder()
         return;
     }
 
-    string dates[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+    string dates[] = {"placeholer", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
     for (int i = 0; i < of.size; i++)
     {
@@ -220,4 +220,78 @@ void Student::showAllOrder()
 // cancel reservation
 void Student::cancelOrder()
 {
+    OrderFile of;
+
+    if (of.size == 0)
+    {
+        cout << "No data" << endl;
+        return;
+    }
+
+    cout << "Select which order do you want to cancel, click 0 to return: " << endl;
+
+    string dates[] = {"placeholer", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+    vector<int> originIndex;
+    int index = 1;
+    for (int i = 0; i < of.size; i++)
+    {
+        if (this->stuId == atoi(of.orderData[i]["stuId"].c_str()))
+        {
+            if (of.orderData[i]["status"] == "1" || of.orderData[i]["status"] == "2")
+            {
+                originIndex.push_back(i);
+
+                string status;
+                if (of.orderData[i]["status"] == "-1")
+                {
+                    status = "Rejected";
+                }
+                else if (of.orderData[i]["status"] == "0")
+                {
+                    status = "Canceled";
+                }
+                else if (of.orderData[i]["status"] == "1")
+                {
+                    status = "Submitted";
+                }
+                else
+                {
+                    status = "Approved";
+                }
+
+                cout << index++ << ". "
+                     << "\tDate: " << dates[atoi(of.orderData[i]["date"].c_str())]
+                     << "\tInterval: " << (of.orderData[i]["interval"] == "1" ? "AM" : "PM")
+                     << "\tID: " << of.orderData[i]["stuId"]
+                     << "\tName: " << of.orderData[i]["stuName"]
+                     << "\tRoom: " << of.orderData[i]["roomId"]
+                     << "\tStatus: " << status << endl;
+            }
+        }
+    }
+
+    int select = 0;
+
+    while (true)
+    {
+        cin >> select;
+        if (select >= 0 && select <= originIndex.size())
+        {
+            if (select == 0)
+            {
+                break;
+            }
+            else
+            {
+                of.orderData[originIndex[select - 1]]["status"] = "0";
+                of.updateOrder();
+                cout << "Order canceled." << endl;
+                break;
+            }
+        }
+        else
+        {
+            cout << "Illegal input, please select again." << endl;
+        }
+    }
 }

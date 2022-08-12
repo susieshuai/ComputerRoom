@@ -1,4 +1,4 @@
-date:1 interval:1 stuId:1 stuName:susie roomId:1 status:1
-date:2 interval:2 stuId:1 stuName:susie roomId:2 status:1
-date:5 interval:2 stuId:3 stuName:amy roomId:2 status:1
-date:4 interval:2 stuId:1 stuName:susie roomId:2 status:1
+date:1interval:1stuId:1stuName:susieroomId:1status:0
+date:2interval:2stuId:1stuName:susieroomId:2status:1
+date:5interval:2stuId:3stuName:amyroomId:2status:1
+date:4interval:2stuId:1stuName:susieroomId:2status:1
