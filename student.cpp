@@ -242,15 +242,7 @@ void Student::cancelOrder()
                 originIndex.push_back(i);
 
                 string status;
-                if (of.orderData[i]["status"] == "-1")
-                {
-                    status = "Rejected";
-                }
-                else if (of.orderData[i]["status"] == "0")
-                {
-                    status = "Canceled";
-                }
-                else if (of.orderData[i]["status"] == "1")
+                if (of.orderData[i]["status"] == "1")
                 {
                     status = "Submitted";
                 }
