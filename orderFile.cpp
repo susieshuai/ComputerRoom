@@ -72,12 +72,12 @@ void OrderFile::updateOrder()
     // overwrite
     for (int i = 0; i < this->size; i++)
     {
-        ofs << "date:" << this->orderData[i]["date"] << ""
-            << "interval:" << this->orderData[i]["interval"] << ""
-            << "stuId:" << this->orderData[i]["stuId"] << ""
-            << "stuName:" << this->orderData[i]["stuName"] << ""
-            << "roomId:" << this->orderData[i]["roomId"] << ""
-            << "status:" << this->orderData[i]["status"] << ""
+        ofs << "date:" << this->orderData[i]["date"] << " "
+            << "interval:" << this->orderData[i]["interval"] << " "
+            << "stuId:" << this->orderData[i]["stuId"] << " "
+            << "stuName:" << this->orderData[i]["stuName"] << " "
+            << "roomId:" << this->orderData[i]["roomId"] << " "
+            << "status:" << this->orderData[i]["status"] << " "
             << endl;
     }
 
