@@ -113,7 +113,7 @@ void Student::applyOrder()
 
     // write order file
     ofstream ofs;
-    ofs.open(ORDER_FILE, ios::in);
+    ofs.open(ORDER_FILE, ios::app);
 
     ofs << "date:" << date << " "
         << "interval:" << interval << " "
@@ -128,12 +128,54 @@ void Student::applyOrder()
 // view my reservation
 void Student::showMyOrder()
 {
+    OrderFile of;
+
+    if (of.size == 0)
+    {
+        cout << "No data" << endl;
+        return;
+    }
+
+    string dates[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+
+    for (int i = 0; i < of.size; i++)
+    {
+        // find my order
+        // c_str() : c style string, string -> const char *
+        // atoi(const char *) : ascii -> int
+        if (this->stuId == atoi(of.orderData[i]["stuId"].c_str()))
+        {
+            string status;
+            if (of.orderData[i]["status"] == "-1")
+            {
+                status = "Submitted";
+            }
+            else if (of.orderData[i]["status"] == "0")
+            {
+                status = "Canceled";
+            }
+            else if (of.orderData[i]["status"] == "1")
+            {
+                status = "Submitted";
+            }
+            else
+            {
+                status = "Approved";
+            }
+
+            cout << "Date: " << dates[atoi(of.orderData[i]["date"].c_str())]
+                 << "\tInterval: " << (of.orderData[i]["interval"] == "1" ? "AM" : "PM")
+                 << "\tID: " << of.orderData[i]["stuId"]
+                 << "\tName: " << of.orderData[i]["stuName"]
+                 << "\tRoom: " << of.orderData[i]["roomId"]
+                 << "\tStatus: " << status << endl;
+        }
+    }
 }
 
 // view all reservation
 void Student::showAllOrder()
 {
-    OrderFile of;
 }
 
 // cancel reservation
